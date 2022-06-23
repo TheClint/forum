@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #e9e3c7;
+}
+
+/* header */
+
+header{
+    background-color: black;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    position: sticky;
+    top: 0;
+}
+
+header h1{
+    color: white;
+    margin: auto 10%;
+}
+
+/* mise en palce du menu burger */
+#menu-burger{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    justify-content: space-around;
+    margin: 5px 10%;
+}
+
+#rectangle1, #rectangle2, #rectangle3{
+    background-color: white;
+    height: 10px;
+    width: 50px;
+}
+
+/* transformation des trois rectangles du menu burger en croix */
+.open #rectangle1{
+    transform: rotate(45deg);
+    position: absolute;
+    top: 25px;
+}
+
+.open #rectangle2{
+    visibility: hidden;
+}
+
+.open #rectangle3{
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 25px;
+}
+
+#menu-burger-wrapper{
+    position: absolute;
+    top: 60px;
+    right: 0px;
+}
+
+/* pour cacher le menu burger initial */
+.none{
+    display: none;
+}
+
+#nav-burger{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+#nav-burger a{
+    color: white;
+    padding: 1.5em 5em;
+    margin-bottom: 0px;
+}
+
+/* main */
+
+#wrapper{
+    margin: 0px 8%;
+    min-height: 90vh;
+}
+
+/* list des topics */
+
+.topic-title{
+    border: solid 1px black;
+    border-radius: 20px;
+    margin: 2px 0px;
+    padding: 1px 1em;
+}
+
+/* footer */
+
+footer{
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+footer h2{
+    color: white;
+    margin: 0px 8%;
+}
+
+footer nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+footer nav a{
+    color: white;
+    text-decoration: none;
+}
+
