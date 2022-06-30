@@ -64,4 +64,9 @@ final Class Topic extends Entity{
     public function setUser($user){
         $this->user = new User($user);
     }
+
+    public function __toString()
+    {
+        return "ceci est un topic : ".$this->getTitle();
+    }
 }

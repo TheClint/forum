@@ -56,4 +56,9 @@ Class Post extends Entity{
     public function setTopic($topic){
         $this->topic = $topic;
     }
+
+    public function __toString()
+    {
+        return "ceci est un post : ".$this->getText();
+    }
 }

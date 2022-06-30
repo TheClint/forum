@@ -22,12 +22,16 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id_categorie` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   PRIMARY KEY (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table forum.categorie : ~1 rows (environ)
+-- Listage des données de la table forum.categorie : ~5 rows (environ)
 /*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
 INSERT INTO `categorie` (`id_categorie`, `name`) VALUES
-	(1, 'tout');
+	(1, 'categorie1'),
+	(2, 'categorie2'),
+	(3, 'categorie3'),
+	(4, 'categorie4'),
+	(5, 'categorie5');
 /*!40000 ALTER TABLE `categorie` ENABLE KEYS */;
 
 -- Listage de la structure de la table forum. post
@@ -42,12 +46,19 @@ CREATE TABLE IF NOT EXISTS `post` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `post_ibfk_1` FOREIGN KEY (`topic_id`) REFERENCES `topic` (`id_topic`),
   CONSTRAINT `post_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table forum.post : ~1 rows (environ)
+-- Listage des données de la table forum.post : ~3 rows (environ)
 /*!40000 ALTER TABLE `post` DISABLE KEYS */;
 INSERT INTO `post` (`id_post`, `message_date`, `text`, `topic_id`, `user_id`) VALUES
-	(1, '2022-06-23 15:31:22', 'aaaaaaaaaaaaaaaaaaaaaaaaa', 1, 32);
+	(1, '2022-06-23 15:31:22', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. ', 1, 32),
+	(2, '2022-06-27 09:20:58', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor.. ', 2, 29),
+	(3, '2022-06-27 09:21:11', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam ', 3, 30),
+	(4, '2022-06-30 09:04:30', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit. ', 1, 30),
+	(5, '2022-06-30 10:42:47', 'fdssssssssssssssssssssbgdnfgdjnv;v,nyjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjty', 4, 33),
+	(6, '2022-06-30 22:02:56', 'aaaaaaaaaaaaaaaabvbfdngfdgd', 4, 37),
+	(7, '2022-06-30 22:11:33', 'gfhdddddddhgfdgggggggggggggggggggggggggggggggggggggggggg', 4, 37),
+	(8, '2022-06-30 22:11:40', 'hgdfffffffffffffffffffffffffffffffffffffffffffffffffffffff', 4, 37);
 /*!40000 ALTER TABLE `post` ENABLE KEYS */;
 
 -- Listage de la structure de la table forum. topic
@@ -63,13 +74,15 @@ CREATE TABLE IF NOT EXISTS `topic` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `topic_ibfk_1` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id_categorie`),
   CONSTRAINT `topic_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table forum.topic : ~2 rows (environ)
+-- Listage des données de la table forum.topic : ~4 rows (environ)
 /*!40000 ALTER TABLE `topic` DISABLE KEYS */;
 INSERT INTO `topic` (`id_topic`, `title`, `topic_date`, `is_locked`, `categorie_id`, `user_id`) VALUES
-	(1, 'aaa', '2022-06-23 16:14:43', 1, 1, 30),
-	(2, 'bbb', '2022-06-23 16:14:44', 1, 1, 30);
+	(1, 'sujet1', '2022-06-23 16:14:43', 0, 1, 30),
+	(2, 'sujet2', '2022-06-23 16:14:44', 0, 1, 30),
+	(3, 'sujet3', '2022-06-27 09:18:11', 0, 2, 32),
+	(4, 'sujet4', '2022-06-27 09:20:07', 0, 3, 32);
 /*!40000 ALTER TABLE `topic` ENABLE KEYS */;
 
 -- Listage de la structure de la table forum. user
@@ -84,34 +97,20 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id_user`),
   UNIQUE KEY `pseudonyme` (`pseudonyme`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
--- Listage des données de la table forum.user : ~23 rows (environ)
+-- Listage des données de la table forum.user : ~3 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id_user`, `pseudonyme`, `register_date`, `email`, `password`, `role`, `estBanni`) VALUES
-	(7, 'user7', '2022-06-07 00:00:00', 'user7@abc.yz', '7777', 'membre', 1),
-	(8, 'user8', '2022-06-08 00:00:00', 'user8@abc.yz', '8888', 'membre', 1),
-	(9, 'user9', '2022-06-09 00:00:00', 'user9@abc.yz', '9999', 'membre', 1),
-	(10, 'user10', '2022-06-10 00:00:00', 'user10@abc.yz', '10101010', 'membre', 1),
-	(11, 'user11', '2022-06-11 00:15:00', 'user11@abc.yz', '11111111', 'membre', 0),
-	(12, 'user12', '2022-06-12 00:00:00', 'user12@abc.yz', '12121212', 'membre', 1),
-	(13, 'user13', '2022-06-13 00:00:00', 'user13@abc.yz', '13131313', 'membre', 1),
-	(14, 'user14', '2022-06-14 00:00:00', 'user14@abc.yz', '14141414', 'membre', 1),
-	(15, 'user15', '2022-06-15 00:00:00', 'user15@abc.yz', '15151515', 'membre', 1),
-	(16, 'user16', '2022-06-16 00:00:00', 'user16@abc.yz', '16161616', 'membre', 1),
-	(17, 'user17', '2022-06-17 00:00:00', 'user17@abc.yz', '17171717', 'membre', 1),
-	(18, 'user18', '2022-06-18 00:00:00', 'user18@abc.yz', '18181818', 'membre', 1),
-	(19, 'user19', '2022-06-19 00:00:00', 'user19@abc.yz', '19191919', 'membre', 1),
-	(20, 'user0', '2022-06-01 00:00:00', 'user0@abc.yz', '0000', 'membre', 1),
-	(21, 'user1', '2022-06-01 00:00:00', 'user1@abc.yz', '1111', 'membre', 1),
-	(22, 'user2', '2022-06-02 00:00:00', 'user2@abc.yz', '2222', 'membre', 1),
-	(23, 'user3', '2022-06-03 00:00:00', 'user3@abc.yz', '3333', 'membre', 1),
-	(24, 'user4', '2022-06-04 00:00:00', 'user4@abc.yz', '4444', 'membre', 1),
-	(25, 'user5', '2022-06-05 00:00:00', 'user5@abc.yz', '5555', 'membre', 1),
-	(26, 'user6', '2022-06-06 00:00:00', 'user6@abc.yz', '6666', 'membre', 1),
-	(29, 'abc', '2022-06-22 00:43:29', 'aaa@a', '$2y$10$mNMcgavUpj5obfVrPuirJ.TZU1rp3Qfqx2FyUsH.JOTgG6Jh/6v7e', 'membre', 0),
-	(30, 'abcc', '2022-06-22 01:03:15', 'aaa@aaa', '$2y$10$4Z..Cepgu4vYo8v77qX9bukANrUhFH6OSx3akK8sn7r2O2J.wy6ye', 'membre', 0),
-	(32, 'b', '2022-06-23 10:37:23', 'b@b', '$2y$10$xKBGm1/rOlCgUk96E0pdO.MXnF1BXJP9SKNw/ASkAQJPifUAxdgx6', 'membre', 0);
+	(29, 'user1', '2022-06-22 00:43:29', 'user1@user1.u', '$2y$10$mNMcgavUpj5obfVrPuirJ.TZU1rp3Qfqx2FyUsH.JOTgG6Jh/6v7e', 'membre', 0),
+	(30, 'user2', '2022-06-22 01:03:15', 'user2@user2.u', '$2y$10$4Z..Cepgu4vYo8v77qX9bukANrUhFH6OSx3akK8sn7r2O2J.wy6ye', 'membre', 0),
+	(32, 'user3', '2022-06-23 10:37:23', 'user3@user3.u', '$2y$10$xKBGm1/rOlCgUk96E0pdO.MXnF1BXJP9SKNw/ASkAQJPifUAxdgx6', 'membre', 1),
+	(33, 'user4', '2022-06-30 10:41:45', 'user4@user4.user4', '$2y$10$ikiREY4DGjvNv7foPI5CrOG2LQLRQO6j86F65vUxOosV3ijF7umBa', 'membre', 0),
+	(34, 'user5', '2022-06-30 15:26:06', 'user5@user5.fr', '$2y$10$oiht6ZfujgazLy4ELOF9B.6elcW4.zehYToSlll62taoyiJ9zQzr6', 'membre', 0),
+	(35, 'user6', '2022-06-30 18:45:51', 'user6@user6.fr', '$2y$10$PPmrWwGYyP7wxu44rC1e7OrNQ5tqKOCmuBeZsFhFtmRAZx.vvKwCO', 'membre', 0),
+	(36, 'user7', '2022-06-30 18:46:40', 'user7@user7.fr', '$2y$10$/lWOvqNUFV42SZ6woYO3/OcmReB8wT/21mmvxy.PLMgfHVi944PSe', 'membre', 0),
+	(37, 'User8', '2022-06-30 19:15:48', 'user8@user8.fr', '$2y$10$Rvkf7vurYI7D.KsONDWuL.d49ShKWTKPHejfLrSXCcIPYkp7813YS', 'admin', 0),
+	(39, 'User11', '2022-06-30 22:49:37', 'user11@user11.fr', '$2y$10$W7fA/Lll8rjRv5COjGchU.cUeVxTokVE7XlcCCCTq6lxuYlFVybi2', 'membre', 0);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

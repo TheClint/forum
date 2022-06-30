@@ -10,6 +10,7 @@ final Class User extends Entity {
     private int $id;
     private String $pseudonyme;
     private DateTime $registerDate;
+    private String $email;
     private String $password;
     private String $role;
     private bool $estBanni;
@@ -54,6 +55,14 @@ final Class User extends Entity {
         $this->registerDate = new DateTime($registerDate);
     }
 
+    public function getEmail(){
+        return $this->email;
+    }
+
+    public function setEmail($email){
+        $this->email = $email;
+    }
+
     public function getPassword(){
         return $this->password;
     }
@@ -76,5 +85,10 @@ final Class User extends Entity {
 
     public function setEstBanni($estBanni){
         $this->estBanni = $estBanni;
+    }
+
+    public function __toString()
+    {
+        return "ceci est un utilisateur : ".$this->getPseudonyme();
     }
 }

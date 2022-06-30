@@ -6,11 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/490620123f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="public\css\style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <script src="public\js\script.js" async></script>
 </head>
 <body>
+    <nav id="nav-categorie">
+                    <?php
+
+use App\Session;
+
+ foreach($result["data"]["categories"] as $categorie){?>
+                            <a href="index.php?ctrl=forum&action=ListTopicsByCategorie&id=<?= $categorie->getId() ?>"><?= $categorie->getName() ?></a>
+                            <?php } ?>
+    </nav>
     <header>
         <h1>Le Forum</h1>
         <div id="menu-burger">
@@ -20,18 +30,42 @@
         </div>
         <div id="menu-burger-wrapper" class="none">
             <nav id="nav-burger">
-                <?php if(isset($_SESSION['user'])){ ?> <a href=""> <?=$_SESSION['user']->getPseudonyme()?> </a> <?php }else{ ?> <a href="index.php?ctrl=security&action=register">S'inscrire</a> <?php } ?>
+                <?php if(isset($_SESSION['user'])){ ?> <a href="index.php?ctrl=forum&action=detailUser&id=<?= $_SESSION['user']->getId() ?>"> <?=$_SESSION['user']->getPseudonyme()?> </a> <?php }else{ ?> <a href="index.php?ctrl=security&action=register">S'inscrire</a> <?php } ?>
                 <a href="index.php?ctrl=forum&action=index">Messages récents</a>
-                <a href="">Messages par catégories</a>
-                <a href="">Mentions</a>
-                <?php if(isset($_SESSION['user'])){ ?> <a href="index.php?ctrl=security&action=logout">Se déconnecter</a> <?php }else{ ?> <a href="index.php?ctrl=security&action=index">Se connecter</a> <?php } ?>
+                <!-- <div class="btn-group dropstart">
+                    <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        Catégories
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark">
+                        <?php
+                        //  foreach($result["data"]["categories"] as $categorie){
+                            ?>
+                            <a href="index.php?ctrl=forum&action=ListTopicsByCategorie&id=
+                            <?= ""
+                            // $categorie->getId() 
+                            ?>
+                            ">
+                            <?= ""
+                            //  $categorie->getName() 
+                            ?>
+                            </a>
+                            <?php 
+                        // } 
+                        ?>
+                    </ul>
+                </div> -->
+                <a id="lien-categorie">Catégories
                 
+                </a>
+                <a href="index.php?ctrl=forum&action=listUsers">Utilisateurs</a>
+                <?php if(isset($_SESSION['user'])){ ?> <a href="index.php?ctrl=security&action=logout">Se déconnecter</a> <?php }else{ ?> <a href="index.php?ctrl=security&action=index">Se connecter</a> <?php } ?> 
             </nav>
-        </div>
+        </div>        
     </header>
     <div id=wrapper>
         <main id="forum">
-            <?php if(isset($result['message'])) echo $result['message']; ?> 
+            <div class="alert-danger"><?= Session::getFlash(Session::CATEGORIE_ERROR) ?></div>
+            <div class="alert-success"><?= Session::getFlash(Session::CATEGORIE_SUCCESS) ?></div>
             <?= $page ?>
         </main>
     </div>

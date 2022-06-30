@@ -3,10 +3,13 @@
 
     class Session{
 
-        private static $categories = ['error', 'success'];
+        const CATEGORIE_ERROR = 'error';
+        const CATEGORIE_SUCCESS = 'success';
 
         /**
         *   ajoute un message en session, dans la catégorie $categ
+        *   @param const $categ une constante CATEGORIE
+        *   @param String $msg le message a envoyé
         */
         public static function addFlash($categ, $msg){
             $_SESSION[$categ] = $msg;
@@ -14,6 +17,7 @@
 
         /**
         *   renvoie un message de la catégorie $categ, s'il y en a !
+        *   @param const $categ une constante CATEGORIE
         */
         public static function getFlash($categ){
             

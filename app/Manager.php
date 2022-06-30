@@ -68,13 +68,42 @@ use Model\Entities\Topic;
             $sql = "INSERT INTO ".$this->tableName."
                     (".implode(',', $keys).") 
                     VALUES
-                    ('".implode("','",$values)."')";
+                    (:".implode(", :",$keys).")";
                     //"'Squalli', 'dfsyfshfbzeifbqefbq', 'sql@gmail.com'"
             /*
                 INSERT INTO user (username,password,email) VALUES ('Squalli', 'dfsyfshfbzeifbqefbq', 'sql@gmail.com') 
             */
             try{
-                return DAO::insert($sql);
+                return DAO::insert($sql, $data);
+            }
+            catch(\PDOException $e){
+                echo $e->getMessage();
+                die();
+            }
+        }
+
+        /** méthode générique pour update des données
+        * @param array $data tableau associatif [colonne => nouvelle donnée]
+        * @param int $id $id de la ligne à update
+        * @return void
+        */
+        public function edit($data, $id){
+          
+            // Création des paramètres de la requête pour la préparer
+            $chaineConcatene = "";
+            foreach($data as $key => $value){
+                $chaineConcatene.=$key." =  :".$key.", ";
+            }
+            $chaineConcatene = substr($chaineConcatene, 0, -2);
+            $sql = "UPDATE ".$this->tableName."
+                    SET ".$chaineConcatene."
+                    WHERE id_".$this->tableName." = :id";
+
+            // inclusion de l'id dans le tableau de donnée
+            $data["id"]=$id;
+
+            try{
+                return DAO::insert($sql, $data);
             }
             catch(\PDOException $e){
                 echo $e->getMessage();
