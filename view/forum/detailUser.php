@@ -7,18 +7,20 @@ $posts = $result["data"]["posts"];
 
 ?>
 
-<h2>Pseudo : <?= $user->getPseudonyme() ?> </h2><?php if(Session::getUser()==$user){?><a class="estVisible"><i class="fa-solid fa-pen"></i></a><?php } ?>
+<h2>Pseudo : <?= $user->getPseudonyme() ?> </h2>
 <h3>Rôle : <?= $user->getRole() ?></h3>
 <!-- image -->
-<img src="./public/img/avatar-forum-proletarien.jpg" class="img-fluid rounded-start" alt="..."><?php if(Session::getUser()==$user){?><a class="estVisible"><i class="fa-solid fa-pen"></i></a><?php } ?>
+<img src="./public/img/avatar-forum-proletarien.jpg" class="img-fluid rounded-start" alt="...">
 <?= $user->getEstBanni() ? "est banni" : "" ?>
 
 <?php
 
 if(Session::getUser()==$user){?>
-  <button id="activer-modification-profil">modifier le profil</button>
-  <h3>Email : <?= $user->getEmail() ?></h3><a class="estVisible" href=""><i class="fa-solid fa-pen"></i></a>
-  <h3>Mot de passe</h3><a class="estVisible" href=""><i class="fa-solid fa-pen"></i></a>
+  
+  <h3>Email : <?= $user->getEmail() ?></h3>
+  <a href="index.php?ctrl=security&action=editUser&id=<?= $user->getId() ?>">Modifier le profil</a>
+  <h3>Mot de passe</h3>
+  <a href="index.php?ctrl=security&action=editPassword&id=<?= $user->getId() ?>">Modifier le mot de passe</a>
 <?php }
 
 

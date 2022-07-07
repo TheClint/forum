@@ -41,6 +41,17 @@
             return (isset($_SESSION['user'])) ? $_SESSION['user'] : false;
         }
 
+        /**
+         *  met un token en session pour la protection contre la faille CSRF
+         */
+        public static function setTokenCSRF($token){
+            $_SESSION["tokenCSRF"] = $token;
+        }
+
+        public static function getTokenCSRF(){
+            return (isset($_SESSION['tokenCSRF'])) ? $_SESSION['tokenCSRF'] : false;
+        }
+
         public static function isAdmin(){
             if(self::getUser() && self::getUser()->hasRole("ROLE_ADMIN")){
                 return true;

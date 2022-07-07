@@ -7,6 +7,10 @@ body{
     background-color: #e9e3c7;
 }
 
+img{
+    width: 100%;
+}
+
 /* header */
 
 header{
@@ -111,31 +115,92 @@ header h1{
 }
 
 /* view topic */
+#topic-title{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 1em;
+}
 
-.card{
+.lock{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.lock i{
+    margin: 0 1em;
+}
+
+#topic .edit-delete-button{
+    min-width: 131px;
+}
+
+#topic .card{
     z-index: 1;
 }
 
-#add-a-post{
+#topic #add-a-post{
 width: 100%;
 display: flex;
 flex-direction: column;
 }
 
-#add-a-post textarea{
+#topic #add-a-post textarea{
     min-height: 200px;
     width: 100%;
 }
 
-#add-a-post div{
+#topic #add-a-post div{
     display: flex;
     flex-direction: row-reverse;
 }
 
-#add-a-post button{
+#topic #add-a-post button{
     margin: 0.5em;
     width: 30%;
 }
+
+#topic .profil-picture{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#topic .profil-picture figure{
+    margin: 1em 0;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#topic .profil-picture figcaption{
+   margin: auto;
+}
+
+#topic .profil-picture figure img{
+    width:200px;
+    clip-path:ellipse(50% 50%);
+}
+
+#topic .card-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+#topic .card-title{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#topic .card-title h5{
+    margin: 1em 0px;
+}
+
 
 .estVisible{
     display: none;

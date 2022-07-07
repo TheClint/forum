@@ -18,6 +18,7 @@
     session_start();
     //et on intègre la classe Session qui prend la main sur les messages en session
     use App\Session as Session;
+use Model\Managers\CategorieManager;
 
 //---------REQUETE HTTP INTERCEPTEE-----------
     $ctrlname = DEFAULT_CTRL;//on prend le controller par défaut

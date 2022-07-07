@@ -14,6 +14,7 @@ menuBurger.addEventListener("click", ()=>{
 });
 
 // pour les boutons éditions
+if(document.getElementById("activer-modification-profil")!=null){
 const activerModificationProfil = document.getElementById("activer-modification-profil");
 const elementsVisibles = document.getElementsByClassName("estVisible");
 var estVisibleActive = false;
@@ -24,9 +25,7 @@ activerModificationProfil.addEventListener("click", ()=>{
         elementVisible.style.display = (estVisibleActive) ? "initial" : "none";
     }
 });
-
-
-
+}
 
 
 const navCategorie = document.getElementById("nav-categorie");
@@ -34,19 +33,37 @@ const lienCategorie = document.getElementById("lien-categorie")
 const rectLienCategorie = lienCategorie.getBoundingClientRect();
 
 
-
-
 lienCategorie.addEventListener("mouseover", ()=>{
     const rectLienCategorie = lienCategorie.getBoundingClientRect();
     navCategorie.style.visibility = "visible";
     navCategorie.style.left = (rectLienCategorie.x - navCategorie.offsetWidth) + "px" ;
     navCategorie.style.top = rectLienCategorie.y + "px";
-    console.log("abc");
     navCategorie.style.display = "flex";
 });
+// récupération du token dans la balise méta
+const metaTab = document.getElementsByTagName("meta");
+let csrfToken = null;
+for(let i=0; i<metaTab.length; i++){
+    if(metaTab[i].getAttribute('name') == 'csrf-token'){
+        csrfToken = metaTab[i].getAttribute('content');
+        break;
+    }
+}
 
-
-
+// pour les formulaires contre la faille CSRF
+// ajout d'un input hidden csrfToken avec la valeur du token de la meta, juste avant que le submit ne submit
+$( "form" ).on("submit", () => {
+    let count = 0;
+    while(document.forms.item(count)!= null){
+    const hiddenInput = document.createElement('input');
+    hiddenInput.type = 'hidden';
+    hiddenInput.value = csrfToken;
+    hiddenInput.name = "csrfToken";
+    document.forms.item(count).appendChild(hiddenInput);
+    count++;
+    }
+return true;
+});
 
 
 // lienCategorie.addEventListener("mouseout", ()=>{
